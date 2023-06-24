@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Watch</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        background:linear-gradient(45deg, rgb(63, 63, 63), rgb(30, 30, 30));
+        /* background-color: aquamarine; */
+        height: 100vh;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    #Analog {
+        /* position: relative; */
+        min-height: 504px;
+        min-width: 504px;
+        /* background:linear-gradient(45deg, rgb(213, 146, 146), rgb(144, 96, 96)); */
+        background: rgb(98, 108, 105);
+        border-radius: 50%;
+        border: 8px solid rgb(191, 172, 90);
+        box-shadow: 4px 4px 5px 3px #000000, inset 4px 4px 5px 5px #000000;
+        font-size: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .one {
+        /* background-color: #fffb00; */
+    }
+
+    .two {
+        display: flex;
+        width: calc(504px - 92px - 144px);
+        justify-content: space-between;
+        align-items: flex-start;
+        transform: translateY(-100%);
+        /* background-color: #ff00003f; */
+    }
+
+    .three {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: calc(504px - 72px);
+        transform: translateY(-75%);
+        /* background-color: #fffb0081; */
+    }
+
+    .four {
+        display: flex;
+        width: 504px;
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: #ff0000; */
+    }
+
+    .five {
+        display: flex;
+        width: calc(504px - 92px);
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: #fffb0054; */
+        transform: translateY(90%);
+    }
+
+    .six {
+        display: flex;
+        width: calc(504px - 144px - 72px - 36px);
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: #ff00007c; */
+        transform: translateY(100%);
+    }
+
+    .seven {
+        display: flex;
+        align-items: center;
+        /* background-color: #fffb00; */
+    }
+
+    #dot {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        position: absolute;
+        /* background-color: #5124c2; */
+        background-color: #000;
+        top: 50%;
+        left: 49%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+
+    #hours {
+        position: absolute;
+        height: 180px;
+        width: 16px;
+        /* background-color: #51ff00; */
+        background-color: #000;
+        border-radius: 20px;
+        top: 50%;
+        left: 49.5%;
+        /* transform: translateY(-100%); */
+        transform-origin: bottom;
+        transform: translateY(-100%) rotate(0deg);
+    }
+
+    #minutes {
+        position: absolute;
+        height: 220px;
+        width: 8px;
+        background-color: #000000;
+        border-radius: 20px;
+        top: 50%;
+        left: 49.8%;
+        /* transform: translateY(-100%); */
+        transform-origin: bottom;
+        transform: translateY(-100%) rotate(0deg);
+    }
+
+    #seconds {
+        position: absolute;
+        height: 200px;
+        width: 2px;
+        /* background-color: #cc00ff; */
+        background-color: #000;
+        border-radius: 2px;
+        top: 50%;
+        left: 50%;
+        /* transform: translateY(-100%); */
+        transform-origin: bottom;
+        transform: translateY(-100%) rotate(0deg);
+    }
+
+</style>
+
+<body>
+    <div id="dot"></div>
+    <div id="hours"></div>
+    <div id="minutes"></div>
+    <div id="seconds"></div>
+
+    <div class="container">
+        <div id="Analog">
+            <div class="one">
+                <span>12</span>
+            </div>
+            <div class="two">
+                <span>11</span>
+                <span>1</span>
+            </div>
+            <div class="three">
+                <span>10</span>
+                <span>2</span>
+            </div>
+            <div class="four">
+                <span>9</span>
+                <span>3</span>
+            </div>
+            <div class="five">
+                <span>8</span>
+                <span>4</span>
+            </div>
+            <div class="six">
+                <span>7</span>
+                <span>5</span>
+            </div>
+            <div class="seven">
+                <span>6</span>
+            </div>
+        </div>
+
+
+        <!-- <canvas id="circle" width="500px" height="500px" style="background-color: #fff; border-radius: 50%; display: flex; justify-content: space-between;">
+    </canvas> -->
+
+
+    </div>
+
+</body>
+<script>
+
+
+    function time() {
+        let hours = document.getElementById('hours');
+        let minutes = document.getElementById('minutes');
+        let seconds = document.getElementById('seconds');
+
+        let h = new Date().getHours();
+        let m = new Date().getMinutes();
+        let s = new Date().getSeconds();
+
+        if (h > 12) {
+            h = h - 12;
+        }
+        
+        let v = 30 * h + 0.5 * m;
+        let k = 6 * m;
+        let p = 6 * s;
+
+        let vinay = `rotate(${v}deg)`;
+        let kumar = `rotate(${k}deg)`;
+        let punna = `rotate(${p}deg)`;
+
+
+
+        hours.style.transform = `translateY(-100%) ${vinay}`;
+        minutes.style.transform = `translateY(-100%) ${kumar}`;
+        seconds.style.transform = `translateY(-100%) ${punna}`;
+    }
+    time();
+    setInterval(time, 1000);
+</script>
+
+</html>
